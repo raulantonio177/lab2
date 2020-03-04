@@ -58,9 +58,17 @@ namespace MVCLaboratorio.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Edit(int idVideo)
+        public ActionResult Edit(int idVideo, string titulo, int repro, string link)
         {
-            return View();
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(new SqlParameter("@idVideo", idVideo));
+            parametros.Add(new SqlParameter("@titulo", titulo));
+            parametros.Add(new SqlParameter("@repro", repro));
+            parametros.Add(new SqlParameter("link", link));
+
+            BaseHelper.ejecutarSentencia("sp_video_editar", CommandType.StoredProcedure, parametros);
+
+            return RedirectToAction("Index", "Video");
         }
     }
 }
