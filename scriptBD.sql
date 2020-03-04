@@ -15,3 +15,10 @@ begin
 insert into video values (@idVideo,@titulo,@repro,@link);
 
 end
+
+create proc sp_video_eliminar
+@idVideo int
+as 
+begin 
+delete from video where @idVideo=idVideo
+end
