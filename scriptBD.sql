@@ -24,7 +24,7 @@ delete from video where @idVideo=idVideo
 end
 
 
-create proc sp_editar_video
+create proc sp_video_editar
 @idVideo int,
 @titulo varchar(100),
 @repro int,
@@ -34,4 +34,10 @@ begin
 
 update video set idVideo=@idVideo,titulo=@titulo,repro=@repro,link=@link where idVideo=@idVideo;
 
+end
+
+create proc sp_video_consultar
+as
+begin 
+select * from video;
 end
